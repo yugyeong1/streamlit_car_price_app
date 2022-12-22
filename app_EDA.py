@@ -6,16 +6,16 @@ import seaborn as sb
 
 def run_eda_app() :
     df = pd.read_csv('data/Car_Purchasing_Data.csv', encoding= 'ISO-8859-1')
-    
-    st.subheader('데이터프레임 확인')
+    st.text('')
+    st.markdown('#### 📌 데이터프레임 확인')
     st.dataframe(df.head(3))    
 
-    st.subheader('기본 통계 데이터')
+    st.markdown('#### 📈 기본 통계 데이터')
     st.dataframe( df.describe() )
 
     # 컬럼을 선택할 수 있게 한다. 하나의 컬럼을 선택하면,
     # 해당 컬럼의 최대값, 최소값 데이터를 화면에 보여준다.
-    st.subheader('최대 / 최소 데이터 확인하기')
+    st.markdown('#### 📌 최대 / 최소 데이터 확인하기')
     column_list = df.columns[4:]
     selected_column = st.selectbox('컬럼을 선택하세요.', column_list)
 
@@ -23,13 +23,15 @@ def run_eda_app() :
         df_max = df[df[selected_column] == df[selected_column].max()]
         df_min = df[df[selected_column] == df[selected_column].min()]
 
-        st.text('최대 데이터')
+        st.markdown('##### 최대 데이터')
         st.dataframe(df_max)
-        st.text('최소 데이터')
+        st.markdown('##### 최소 데이터')
         st.dataframe(df_min)
 
 
-
+    st.text('')
+    st.text('')
+    st.text('')
     # 선택한 컬럼의 히스토그램
     st.subheader('컬럼 별 히스토그램')
     

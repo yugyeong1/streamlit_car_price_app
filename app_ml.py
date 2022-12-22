@@ -4,7 +4,8 @@ import joblib
 
 
 def run_ml_app() :
-    st.subheader('자동차 금액 예측')
+    st.text('')
+    st.markdown('#### 데이터를 입력하면, 자동차 금액을 예측합니다!')
 
 #성별 여자이고, 나이는 50, 연봉은 4만달러, 카드빚 5만달러
 # 자산은 20만 달라이면 이 사람은 얼마짜리 차를 살 것인가?
@@ -12,6 +13,7 @@ def run_ml_app() :
 # 성별, 나이, 연봉, 카드빚, 자산을 유저한테 모두 입력받아서
 # 자동차 구매 금액 예측하세요.
 
+    st.text('')
     gender = st.radio('성별을 선택하세요', ['여자', '남자'])
 
     if gender == '여자' :
@@ -19,13 +21,13 @@ def run_ml_app() :
 
     elif gender == '남자' :
         gender = 0
-
+    st.text('')
     age = st.number_input('나이를 입력하세요', 18 , 100)
     salary = st.number_input('연봉을 입력하세요', 10000, 1000000)
     card_debt = st.number_input('카드빚을 입력하세요', 0, 1000000)
     net_Worth = st.number_input('자산을 입력하세요', 1000, 10000000)
 
-
+    st.text('')
     new_data = np.array([gender, age, salary, card_debt, net_Worth])
     new_data = new_data.reshape(1,5)
 
